@@ -72,7 +72,7 @@ just on the hand-checked sample.
 
 **Screenshot (actual program run):**
 
-![Correctness and performance check](images/correctness_check.png)
+<img width="545" height="376" alt="image" src="https://github.com/user-attachments/assets/a0349020-0a3e-4a05-9667-aba4140b8174" />
 
 ## Performance
 
