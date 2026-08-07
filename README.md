@@ -1,5 +1,6 @@
 ## Correctness Check
-
+ ![Correctness check](images/correctness_check.png) - the path is relative to where README.md sits in the repo.
+ 
 The assembly routine uses `cvtsd2si`, which rounds to the nearest integer
 (round-half-to-even) per IEEE 754 / the CPU's default rounding mode. This was
 verified two ways:
