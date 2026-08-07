@@ -1,4 +1,4 @@
-# MP2 Submission — x86-64 / C Interface Programming Project
+# MP2 Submission x86-64 / C Interface Programming Project
 SERRA, MARY NICOLE S.
 
 Grayscale image conversion (double-precision float pixels → uint8 pixels)
@@ -7,11 +7,11 @@ conversion, using scalar SIMD floating-point instructions).
 
 ## Files
 
-- `main.c` — reads height/width and pixel data, allocates buffers, times
+- `main.c` reads height/width and pixel data, allocates buffers, times
   the assembly routine over 30 runs, and prints the output.
-- `imgcvt.asm` — implements `imgCvtGrayDoubleToInt`, the conversion routine,
+- `imgcvt.asm` implements `imgCvtGrayDoubleToInt`, the conversion routine,
   using scalar SSE2 instructions (`movsd`, `mulsd`, `cvtsd2si`).
-- `main.exe` — prebuilt Windows executable (optional convenience; can be
+- `main.exe` prebuilt Windows executable (optional convenience; can be
   rebuilt from source, see Build below).
 
 ## Build
@@ -20,7 +20,7 @@ conversion, using scalar SIMD floating-point instructions).
 nasm -f win64 imgcvt.asm -o imgcvt.obj
 gcc main.c imgcvt.obj -o main.exe
 ```
-(or the MSVC/mingw equivalent — any Windows x86-64 toolchain works.)
+(or the MSVC/mingw equivalent any Windows x86-64 toolchain works.)
 
 ## Run
 
@@ -50,7 +50,7 @@ was verified two ways:
 
 | Pixel | f    | f*255 (exact) | Program output | Spec's sample output |
 |-------|------|----------------|------------------|------------------------|
-| most  | —    | —              | matches          | matches                |
+| most  | -    | -              | matches          | matches                |
 | (0,2) | 0.45 | 114.75         | **115**          | 114                    |
 | (2,0) | 0.85 | 216.75         | **217**          | 216                    |
 
@@ -58,7 +58,7 @@ All 10 other pixels match exactly. The two that don't (`0.45` and `0.85`)
 both land on `x.75`, which is strictly closer to the next integer up, so
 round-to-nearest correctly produces 115 and 217. The spec's table appears
 to use truncation for just these two entries, while the rest of the table
-(e.g. `0.25 -> 63.75 -> 64`) matches rounding, not truncation — no single
+(e.g. `0.25 -> 63.75 -> 64`) matches rounding, not truncation, no single
 rounding rule reproduces every value in the given sample. This looks like
 a typo in the assignment's example rather than an error in the program;
 round-to-nearest was kept since it's mathematically correct and consistent
@@ -90,7 +90,7 @@ scalar loop: each pixel is one `movsd` / `mulsd` / `cvtsd2si` plus a
 compare-based clamp, with no dependency between pixels. The jump from
 10x10 to 100x100 to 1000x1000 tracks the ~100x growth in pixel count each
 step, showing the per-pixel cost stays flat as the image grows rather than
-degrading — no evidence of cache-related slowdown even at 1,000,000 pixels.
+degrading, no evidence of cache-related slowdown even at 1,000,000 pixels.
 
 ## Video
 
