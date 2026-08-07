@@ -94,4 +94,4 @@ degrading, no evidence of cache-related slowdown even at 1,000,000 pixels.
 
 ## Video
 
-Walkthrough of source code, compilation, and execution: []
+Walkthrough of source code, compilation, and execution: [https://drive.google.com/file/d/1z2yfh9knCBAiOagsW7qbTQ5Kn4Ab5dgz/view?usp=sharing]
