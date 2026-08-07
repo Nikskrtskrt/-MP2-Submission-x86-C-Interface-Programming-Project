@@ -8,7 +8,7 @@ verified two ways:
 
    | Pixel | f      | f*255 (exact) | Program output | Spec's sample output |
    |-------|--------|---------------|-----------------|------------------------|
-   | most  | —      | —             | matches         | matches                |
+   | most  | -      | -             | matches         | matches                |
    | (0,2) | 0.45   | 114.75        | **115**         | 114                    |
    | (2,0) | 0.85   | 216.75        | **217**         | 216                    |
 
@@ -16,7 +16,7 @@ verified two ways:
    both land on `x.75`, which is strictly closer to the next integer up, so
    round-to-nearest correctly produces 115 and 217. The spec's table appears
    to use truncation for just these two entries while the rest of the table
-   (e.g. `0.25 -> 63.75 -> 64`) matches rounding, not truncation — no single
+   (e.g. `0.25 -> 63.75 -> 64`) matches rounding, not truncation and no single
    rounding rule reproduces every value in the given sample. This looks like
    a typo in the assignment's example rather than an error in the program;
    round-to-nearest was kept since it's the mathematically correct behavior
@@ -37,7 +37,7 @@ verified two ways:
 | 1000 x 1000| 0.001121210 s |
 
 Runtime scales roughly linearly with pixel count (~1.1 microseconds per
-1,000 pixels), consistent with the O(n) scalar loop — each pixel is one
+1,000 pixels), consistent with the O(n) scalar loop each pixel is one
 `movsd`/`mulsd`/`cvtsd2si` plus a compare-based clamp, with no
 inter-pixel dependency, so the cost per element stays flat as the image
 grows and the small jump between 10x10 and 100x100 is mostly fixed
